@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 Route::get('/',[HomeController::class,'index']);
+Route::get('/add_doctor',[AdminController::class,'addview']);
 
 Route::get('/home',[HomeController::class,'redirect']);
 
