@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-      <a href="index.html"><h1 class="mb-0 font-weight-normal">HOSPITAL MANAGEMENT</h1></a>
+      <a href="home"><h1 class="mb-0 font-weight-normal">HOSPITAL MANAGEMENT</h1></a>
       <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
     </div>
     <ul class="nav">

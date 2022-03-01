@@ -38,14 +38,14 @@ class AdminController extends Controller
     {
         $doctor = new doctor_info();
         $image = $request->image;
-        $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->file->move('doctorimage',$imagename);
+        $imagename=time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('doctor',$imagename);
         $doctor->image=$imagename;
         $doctor->name=$request->name;
         $doctor->phone=$request->phone;
-        $doctor->speciality->$request->speciality;
+        $doctor->speciality=$request->speciality;
         $doctor->save();
-        return view('admin.body');
+        return redirect()->back()->with('message','Doctor Added Successfully');
     }
 
     /**
