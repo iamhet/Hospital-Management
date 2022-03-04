@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <title>Document</title>
     @include('admin.css')
-  </head>
-  <body>
+</head>
+<body>
     <div class="container-scroller">
-      @include('admin.sidebar')
-      @include('admin.navbar')
-      @include('admin.body')
+        @include('admin.sidebar')
+        @include('admin.navbar')
     </div>
     @include('admin.script')
-  </body>
+</body>
 </html>

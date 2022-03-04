@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\appointment;
 use App\Models\doctor_info;
 use Illuminate\Http\Request;
 
@@ -54,42 +55,36 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data= appointment::all();
+        return view('admin.aprove_appointment',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function approved($id)
     {
-        //
+        $data=appointment::find($id);
+        $data->status='approved';
+        $data->save();
+        return redirect()->back();
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function cancle($id)
     {
-        //
+        $data=appointment::find($id);
+        $data->status='cancled';
+        $data->save();
+        return redirect()->back();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function manage_doctor(){
+        $doctor=doctor_info::all();
+        return view('admin.manage_doctor',compact('doctor'));
+    }
+    public function update_doctor($id){
+        return view('admin.update_doctor');
+    }
+    public function delete_doctor($id){
+        $doctor=doctor_info::find($id);
+        $doctor->delete();
+        return redirect()->back(); 
     }
 }

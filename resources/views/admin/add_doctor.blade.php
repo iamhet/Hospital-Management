@@ -18,14 +18,14 @@
           <button type="button" class="close" data-dismiss='alert'>X</button>
         </div>        
       @endif
-        <h1 class="mt-5 display-2">ADD STUDENT</h1>
+        <h1 class="mt-5 display-2">ADD DOCTOR</h1>
         {!! Form::open(['url'=>'store' ,'method' => 'POST', 'files'=>true ]) !!}
         @csrf
-            <div class="mt-5 pt-3 w-50">
+            <div class="mt-5 pt-3 w-50 ">
                 <form>
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-4 form-outline form-white">
                         <label class="form-label" for="form2Example1">Doctor Name :</label>
-                        {!! Form::text('name', null, ['placeholder' => 'Enter Doctor Name', 'class' => 'form-control text-dark']) !!}
+                        {!! Form::text('name', null, ['placeholder' => 'Enter Doctor Name', 'class' => 'form-control text-dark ']) !!}
                     </div>
                   
                     <div class="form-outline mb-4">
