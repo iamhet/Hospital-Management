@@ -5,8 +5,8 @@
   </head>
   <body>
     <div class="container-scroller">
-      @include('admin.sidebar')
       @include('admin.navbar')
+      @include('admin.sidebar')
       @include('admin.body')
     </div>
     @include('admin.script')

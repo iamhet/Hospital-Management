@@ -6,10 +6,12 @@
   <body>
     <div class="container-scroller">
       
+      @include('admin.navbar')
     @include('admin.sidebar')
-    @include('admin.navbar')
 
-    <div class="container " style="margin-top: 7%; scrollbar-width: auto;">
+    
+    <div class="main-panel">
+      
         <table class="table table-dark" style="color: rgb(147, 147, 155);">
           <thead>
             <tr>

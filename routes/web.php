@@ -34,5 +34,6 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/cancle/{id}', 'cancle');
     Route::get('/manage_doctor', 'manage_doctor');
     Route::get('/update_d/{id}', 'update_doctor');
+    Route::post('/update/{id}', 'update');
     Route::get('/delete_d/{id}', 'delete_doctor');
 });

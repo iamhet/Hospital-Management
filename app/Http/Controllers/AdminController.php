@@ -80,11 +80,28 @@ class AdminController extends Controller
         return view('admin.manage_doctor',compact('doctor'));
     }
     public function update_doctor($id){
-        return view('admin.update_doctor');
+        $doctor=doctor_info::find($id);
+        return view('admin.doctor_update',compact('doctor'));
     }
     public function delete_doctor($id){
         $doctor=doctor_info::find($id);
         $doctor->delete();
         return redirect()->back(); 
+    }
+    public function update(Request $request,$id)
+    {
+        $doctor=doctor_info::find($id);
+        $image = $request->image;
+        if($image)
+        {
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('doctor',$imagename);
+            $doctor->image=$imagename;
+        }
+        $doctor->name=$request->name;
+        $doctor->phone=$request->phone;
+        $doctor->speciality=$request->speciality;
+        $doctor->save();
+        return redirect('manage_doctor');
     }
 }
