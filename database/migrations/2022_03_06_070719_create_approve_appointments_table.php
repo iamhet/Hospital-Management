@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('approve_appointments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('number')->nullable();
             $table->string('message')->nullable();
             $table->string('user_id')->nullable();
-            $table->string('status')->default('In Progress');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('approve_appointments');
     }
 };

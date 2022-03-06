@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\appointment;
+use App\Models\approve_appointment;
+use App\Models\cancled_appointment;
 use App\Models\doctor_info;
 use Illuminate\Http\Request;
 
@@ -64,15 +66,43 @@ class AdminController extends Controller
     public function approved($id)
     {
         $data=appointment::find($id);
-        $data->status='approved';
-        $data->save();
+        $approved=new approve_appointment();
+        $approved->name=$data->name;
+        $approved->email=$data->email;
+        $approved->date=$data->date;
+        $approved->speciality=$data->speciality;
+        $approved->number=$data->number;
+        $approved->message=$data->message;
+        $approved->user_id=$data->user_id;
+        $approved->status='approved';
+        $approved->save();
+        $data->delete();
         return redirect()->back();
+    }
+    public function appointment()
+    {
+        $approved=approve_appointment::all();
+        return view('admin.appointment',compact('approved'));
+    }
+    public function cancled_appointment()
+    {
+        $cancled=cancled_appointment::all();
+        return view('admin.cancled_appointment',compact('cancled'));
     }
     public function cancle($id)
     {
         $data=appointment::find($id);
-        $data->status='cancled';
-        $data->save();
+        $cancle=new cancled_appointment();
+        $cancle->name=$data->name;
+        $cancle->email=$data->email;
+        $cancle->date=$data->date;
+        $cancle->speciality=$data->speciality;
+        $cancle->number=$data->number;
+        $cancle->message=$data->message;
+        $cancle->user_id=$data->user_id;
+        $cancle->status='cancled';
+        $cancle->save();
+        $data->delete();
         return redirect()->back();
     }
     public function manage_doctor(){

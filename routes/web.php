@@ -29,6 +29,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::controller(AdminController::class)->group(function () {
     Route::get('/add_doctor', 'create');
     Route::post('/store', 'store');
+    Route::get('/appointment', 'appointment');
+    Route::get('/cancled_appointment', 'cancled_appointment');
     Route::get('/aprove_appointment', 'show');
     Route::get('/approve/{id}', 'approved');
     Route::get('/cancle/{id}', 'cancle');
