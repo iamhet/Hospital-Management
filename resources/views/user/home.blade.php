@@ -85,7 +85,7 @@
             @if (Route::has('login'))
                 @auth
                 <li class="nav-item">
-                  <a class="nav-link" href="appointment_user">Appointment</a>
+                  <a class="nav-link" href="{{url('show_appointment')}}">Appointment</a>
                 </li>
                 <x-app-layout>
                 </x-app-layout>

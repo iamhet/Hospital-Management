@@ -118,7 +118,7 @@
           <td>{{$appoint->date}}</td>
           <td>{{$appoint->speciality}}</td>
           <td>
-              <a href="{{url('cancle_appointment',$appoint->id)}}">
+              <a href="{{route('appointment.store',$appoint->id)}}">
             <button type="button" class="btn btn-danger btn-sm px-3" style="color: white;background-color: red;">
               X
             </button>

@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-    <a href="home"><h1 class="mb-0 font-weight-normal">Devine</h1></a>
+    <a href="home"><h1 class="mb-0 font-weight-normal">Devine </h1></a>
     <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
   </div>
   <div >
@@ -66,6 +66,37 @@
       </a>
     </li>
 
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+        <span class="menu-icon">
+          <i class="mdi mdi-file-document-box"></i>
+        </span>
+        <span class="menu-title">Role Management </span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="auth">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{route('roles.create')}}">Add Role</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('roles.index')}}">Manage Role</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+        <span class="menu-icon">
+          <i class="mdi mdi-file-document-box"></i>
+        </span>
+        <span class="menu-title">User Management </span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="auth">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{url('aprove_appointment')}}">Add User</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('appointment')}}">Manage User</a></li>
+        </ul>
+      </div>
+    </li>
     
     <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -77,8 +108,8 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{url('manage_doctor')}}"> Manage Doctor </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{url('add_doctor')}}"> Add Doctor </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('doctor_index')}}"> Manage Doctor </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('doctor.create')}}"> Add Doctor </a></li>
         </ul>
       </div>
     </li>
@@ -92,13 +123,14 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{url('aprove_appointment')}}">Appointment</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('appointment.index')}}">Appointment</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{url('appointment')}}">Approved Appointment</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{url('cancled_appointment')}}">Cancled Appointment</a></li>
         </ul>
       </div>
     </li>
       
+    
   </ul>
   </div>
 </nav>

@@ -2,7 +2,7 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
 
-        {!! Form::open(['url'=>'appointment' ,'method' => 'POST', 'files'=>true, 'class' => 'main-form' ]) !!}
+        {!! Form::open(['url'=>'create_appointment' ,'method' => 'POST', 'files'=>true, 'class' => 'main-form' ]) !!}
         @csrf
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">

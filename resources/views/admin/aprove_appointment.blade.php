@@ -36,8 +36,8 @@
               <td>{{$item->date}}</td>
               <td>{{$item->speciality}}</td>
               <td>{{$item->status}}</td>
-              <td><a href="{{url('approve',$item->id)}}" class="btn btn-success">Approve</a></td>
-              <td><a href="{{url('cancle',$item->id)}}" class="btn btn-danger">Cancle</a></td>
+              <td><a href="{{route('appointment.edit',$item->id)}}" class="btn btn-success">Approve</a></td>
+              <td><a href="{{route('appointment.destroy',$item->id)}}" class="btn btn-danger">Cancle</a></td>
           </tr>
           @endforeach 
           </tbody>

@@ -32,8 +32,8 @@
               <td>{{$item->phone}}</td>
               <td>{{$item->speciality}}</td>
               <td><img src="doctor/{{$item->image}}" style="width: 80px; height: 80px;"/></td>
-              <td><a href="{{url('update_d',$item->id)}}" class="btn btn-primary">Update</a></td>
-              <td><a href="{{url('delete_d',$item->id)}}" class="btn btn-danger">Delete</a></td>
+              <td><a href="{{route('doctor.edit',$item->id)}}" class="btn btn-primary">Update</a></td>
+              <td><a href="{{url('doctor_destroy',$item->id)}}" class="btn btn-danger">Delete</a></td>
           </tr>
           @endforeach 
           </tbody>

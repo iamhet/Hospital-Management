@@ -18,7 +18,7 @@
         </div>        
       @endif
         <h1 class="mt-5 display-2">ADD DOCTOR</h1>
-        {!! Form::open(['url'=>['update',$doctor->id] ,'method' => 'POST', 'files'=>true ]) !!}
+        {!! Form::open(['url'=>['doctor_update',$doctor->id] ,'method' => 'POST', 'files'=>true ]) !!}
         @csrf
             <div class="mt-5 pt-3 w-50 ">
                     <div class="form-outline mb-4 form-outline form-white">

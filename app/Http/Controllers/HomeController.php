@@ -35,38 +35,7 @@ class HomeController extends Controller
         } else {
         }
     }
-    public function appointment(Request $request)
-    {
-        $appointment= new appointment();
-        $appointment->name = $request->name;
-        $appointment->email = $request->email;
-        $appointment->date = $request->date;
-        $appointment->speciality = $request->speciality;
-        $appointment->number = $request->number;
-        $appointment->message = $request->message;
-        $appointment->status = 'In Progress';
-        if(Auth::id())
-        {
-            $appointment->user_id = Auth::user()->id; 
-        }
-        $appointment->save();
-        return redirect()->back()->with('message','Appointment Successfully. We will contact you');
-    }
-    public function appointment_user()
-    {
-        if(Auth::id())
-        {
-            $userid=Auth::user()->id;
-            $appointment=appointment::where('user_id',$userid)->get();
-            return view('user.appointment_user',compact('appointment'));
-        }
-        else{
-            return redirect()->back();
-        }
-    }
-    public function cancle_appointment($id){
-        $appointment=appointment::find($id);
-        $appointment->delete();
-        return redirect()->back();
-    }
+   
+    
+   
 }
