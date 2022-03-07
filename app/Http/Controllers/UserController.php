@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserController extends Controller
 {
+    use HasRoles;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user=User::all();
+        return view('admin.User.manage_user',compact('user'));        
     }
 
     /**
@@ -23,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $role=Role::pluck('name','name')->all();
+        return view('admin.User.add_user',compact('role'));
     }
 
     /**
@@ -34,7 +42,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name=$request->name;
+        $user->phone=$request->phone;
+        $user->address=$request->address;
+        $user->email=$request->email;
+        $request['password'] = Hash::make($request['password']);
+        $user->password=$request->password;
+        $user->userType=$request->usertype;
+        $user->save();
+        $user->assignRole($request->input('role'));
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +74,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $user = User::find($id);
+        // $role = Role::pluck('name','name')->all();
+        // $userRole = $user->role->pluck('name','name')->all();
     }
 
     /**
@@ -68,7 +88,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

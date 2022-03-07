@@ -83,30 +83,30 @@
     </li>
 
     <li class="nav-item menu-items">
-      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+      <a class="nav-link" data-bs-toggle="collapse" href="#user" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
           <i class="mdi mdi-file-document-box"></i>
         </span>
         <span class="menu-title">User Management </span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="auth">
+      <div class="collapse" id="user">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{url('aprove_appointment')}}">Add User</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{url('appointment')}}">Manage User</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('users.create')}}">Add User</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{route('users.index')}}">Manage User</a></li>
         </ul>
       </div>
     </li>
     
     <li class="nav-item menu-items">
-      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+      <a class="nav-link" data-bs-toggle="collapse" href="#doctor" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
           <i class="mdi mdi-security"></i>
         </span>
         <span class="menu-title">Doctor Management</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="auth">
+      <div class="collapse" id="doctor">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{url('doctor_index')}}"> Manage Doctor </a></li>
           <li class="nav-item"> <a class="nav-link" href="{{route('doctor.create')}}"> Add Doctor </a></li>
@@ -124,7 +124,7 @@
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{route('appointment.index')}}">Appointment</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{url('appointment')}}">Approved Appointment</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('approve_appointment')}}">Approved Appointment</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{url('cancled_appointment')}}">Cancled Appointment</a></li>
         </ul>
       </div>

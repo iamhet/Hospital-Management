@@ -37,7 +37,13 @@
               <td>{{$item->speciality}}</td>
               <td>{{$item->status}}</td>
               <td><a href="{{route('appointment.edit',$item->id)}}" class="btn btn-success">Approve</a></td>
-              <td><a href="{{route('appointment.destroy',$item->id)}}" class="btn btn-danger">Cancle</a></td>
+              <td>
+                <form action="{{route('appointment.destroy',$item->id)}}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button type="submit" class="btn btn-danger">Cancle</button>
+                </form>                
+              </td>
           </tr>
           @endforeach 
           </tbody>

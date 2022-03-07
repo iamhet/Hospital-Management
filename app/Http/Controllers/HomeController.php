@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function redirect()
     {
         if (Auth::id()) {
-            if (Auth::user()->userType == '0') {
+            if (Auth::user()->userType == 'user') {
                 $doctor = doctor_info::all();
                 $items = doctor_info::pluck('speciality');
                 return view('user.home', compact('doctor','items'));

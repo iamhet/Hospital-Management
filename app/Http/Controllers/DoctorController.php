@@ -15,7 +15,7 @@ class DoctorController extends Controller
     public function index()
     {
         $doctor=doctor_info::all();
-        return view('admin.manage_doctor',compact('doctor'));
+        return view('admin.Doctor.manage_doctor',compact('doctor'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.add_doctor');
+        return view('admin.Doctor.add_doctor');
     }
 
     /**
@@ -68,7 +68,7 @@ class DoctorController extends Controller
     public function edit($id)
     {
         $doctor=doctor_info::find($id);
-        return view('admin.doctor_update',compact('doctor'));
+        return view('admin.Doctor.doctor_update',compact('doctor'));
     }
 
     /**

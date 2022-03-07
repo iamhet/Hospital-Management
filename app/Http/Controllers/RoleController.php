@@ -18,7 +18,7 @@ class RoleController extends Controller
     public function index()
     {
         $role=Role::all();
-        return view('admin.manage_role',compact('role'));
+        return view('admin.Role.manage_role',compact('role'));
     }
 
     /**
@@ -29,7 +29,7 @@ class RoleController extends Controller
     public function create()
     {
         $permission = Permission::get();
-        return view('admin.add_role', compact('permission'));
+        return view('admin.Role.add_role', compact('permission'));
     }
 
     /**
@@ -69,7 +69,7 @@ class RoleController extends Controller
         $rolePermission=DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
         ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
         ->all();
-        return view('admin.role_update',compact('role','permission','rolePermission'));
+        return view('admin.Role.role_update',compact('role','permission','rolePermission'));
     }
 
     /**

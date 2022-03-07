@@ -18,7 +18,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $data = appointment::all();
-        return view('admin.aprove_appointment', compact('data'));
+        return view('admin.Appointment.aprove_appointment', compact('data'));
     }
 
     /**
@@ -138,11 +138,11 @@ class AppointmentController extends Controller
     public function appointment()
     {
         $approved=approve_appointment::all();
-        return view('admin.appointment',compact('approved'));
+        return view('admin.Appointment.appointment',compact('approved'));
     }
     public function cancled_appointment()
     {
         $cancled=cancled_appointment::all();
-        return view('admin.cancled_appointment',compact('cancled'));
+        return view('admin.Appointment.cancled_appointment',compact('cancled'));
     }
 }

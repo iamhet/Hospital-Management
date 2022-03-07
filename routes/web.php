@@ -32,10 +32,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::controller(AppointmentController::class)->group(function () {
     Route::post('create_appointment','create');
     Route::get('show_appointment','show');
-    Route::get('/appointment', 'appointment');
+    Route::get('/approve_appointment', 'appointment');
     Route::get('/cancled_appointment', 'cancled_appointment');
 });
-
 Route::controller(DoctorController::class)->group(function () {
     Route::get('doctor_index','index');
     Route::get('doctor_destroy/{id}','destroy');

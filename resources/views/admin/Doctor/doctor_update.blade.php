@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-outline mb-4 ">
                         <label class="form-label" for="form2Example1"> Image :</label><br>
-                        <img src="{{asset('doctor/$doctor->image')}}" style="width: 80px; height: 80px;"/>
+                        <img src="{{url('/doctor/',$doctor->image)}}" style="width: 80px; height: 80px;"/>
                     </div>
                     <div class="form-outline mb-4 ">
                         <label class="form-label" for="form2Example1">Doctor Image :</label><br>
