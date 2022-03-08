@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    use HasRoles;
     /**
      * Display a listing of the resource.
      *
@@ -74,9 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // $user = User::find($id);
-        // $role = Role::pluck('name','name')->all();
-        // $userRole = $user->role->pluck('name','name')->all();
+        $user = User::find($id);
+        $role = Role::pluck('name','name')->all();
+        return view('admin.user.user_update',compact('user','role'));
     }
 
     /**
@@ -88,7 +87,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $data= $request->all();
+        $user = User::find($id);
+        if(!empty($data['password'])){ 
+            $data['password'] = Hash::make($data['password']);
+        }else{
+            $data['password'] = $user->password;
+        }
+        $user->update($data);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        $user->assignRole($request->input('roles'));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -99,6 +108,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('users.index');
     }
 }

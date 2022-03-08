@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\doctor_info;
+use App\Models\news;
 use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors=doctor_info::all();
-        return view('admin.Doctor.manage_doctor',compact('doctors'));
+        $news = news::all();
+        return view('admin.News.manage_news',compact('news'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.Doctor.add_doctor');
+        return view('admin.News.add_news');
     }
 
     /**
@@ -36,16 +36,20 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $doctor = new doctor_info();
-        $image = $request->image;
+        $news= new news();
+        $image=$request->image;
         $imagename=time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('doctor',$imagename);
-        $doctor->image=$imagename;
-        $doctor->name=$request->name;
-        $doctor->phone=$request->phone;
-        $doctor->speciality=$request->speciality;
-        $doctor->save();
-        return redirect()->back()->with('message','Doctor Added Successfully');
+        $request->image->move('news_image',$imagename);
+        $writer_i=$request->writer_image;
+        $writer_iname=time().'w.'.$writer_i->getClientOriginalExtension();
+        $request->writer_image->move('writer_image',$writer_iname);
+        $news->image=$imagename;
+        $news->writer_image=$writer_iname;
+        $news->topic=$request->topic;
+        $news->writer=$request->writer;
+        $news->save();
+        return redirect()->back()->with('message','News Added Successfully');
+
     }
 
     /**
@@ -67,8 +71,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $doctor=doctor_info::find($id);
-        return view('admin.Doctor.doctor_update',compact('doctor'));
+        $news=news::find($id);
+        return view('admin.News.update_news',compact('news'));
     }
 
     /**
@@ -80,19 +84,7 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $doctor=doctor_info::find($id);
-        $image = $request->image;
-        if($image)
-        {
-            $imagename=time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('doctor',$imagename);
-            $doctor->image=$imagename;
-        }
-        $doctor->name=$request->name;
-        $doctor->phone=$request->phone;
-        $doctor->speciality=$request->speciality;
-        $doctor->save();
-        return redirect('doctor_index');
+        //
     }
 
     /**
@@ -103,8 +95,6 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctor=doctor_info::find($id);
-        $doctor->delete();
-        return redirect()->back();
+        //
     }
 }

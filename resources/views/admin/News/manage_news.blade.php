@@ -16,24 +16,24 @@
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Speciality</th>
+              <th scope="col">Title</th>
+              <th scope="col">Writer</th>
+              <th scope="col">Writer Image</th>
               <th scope="col">Image</th>
               <th scope="col">Update</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($doctors->chunk(2) as $items)
+            @foreach ($news->chunk(2) as $items)
               @foreach ($items as $item)
               <tr>
                 <th scope="row">{{$item->id}}</th>
-                <td>{{$item->name}}</td>
-                <td>{{$item->phone}}</td>
-                <td>{{$item->speciality}}</td>
-                <td><img src="doctor/{{$item->image}}" style="width: 80px; height: 80px;"/></td>
-                <td><a href="{{route('doctor.edit',$item->id)}}" class="btn btn-primary">Update</a></td>
+                <td>{{$item->topic}}</td>
+                <td>{{$item->writer}}</td>
+                <td><img src="writer_image/{{$item->writer_image}}" style="width: 80px; height: 80px;"/></td>
+                <td><img src="news_image/{{$item->image}}" style="width: 80px; height: 80px;"/></td>
+                <td><a href="{{route('news.edit',$item->id)}}" class="btn btn-primary">Update</a></td>
                 <td><a href="{{url('doctor.destroy',$item->id)}}" class="btn btn-danger">Delete</a></td>
               
             </tr>       

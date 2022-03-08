@@ -19,7 +19,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,11 +30,16 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>
-                                {{-- @if (!empty($item->getRoleNames()))
+                                @if (!empty($item->getRoleNames()))
                                     <label>{{ $item->getRoleNames() }}</label>
-                                @endif --}}
+                                @endif
                             </td>
-                            <td><a href="{{ route('users.edit', $item->id) }}" class="btn btn-primary">Update</a><br/>
+                            <td><a href="{{ route('users.edit', $item->id) }}" >
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </a>
+                               
+                            </td>
+                            <td>
                                 <form action="{{route('users.destroy',$item->id)}}" method="post">
                                     @csrf
                                     @method('delete')
