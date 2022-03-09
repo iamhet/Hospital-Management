@@ -24,6 +24,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'redirect');
     Route::get('/', 'index');
     Route::get('/cancle_appointment/{id}', 'cancle_appointment');
+    Route::get('/aboutus','about');
+    Route::get('/doctors','doctors');
+    Route::get('/newsdetail','news');
+    Route::get('/news_open/{id}','news_open');
+    Route::get('/contact','contact');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

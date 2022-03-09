@@ -47,6 +47,7 @@ class NewsController extends Controller
         $news->writer_image=$writer_iname;
         $news->topic=$request->topic;
         $news->writer=$request->writer;
+        $news->Description=$request->Description;
         $news->save();
         return redirect()->back()->with('message','News Added Successfully');
 
@@ -84,7 +85,25 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $news=news::find($id);
+        $image = $request->image;
+        $writer_image = $request->writer_image;
+        if($image)
+        {
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('news_image',$imagename);
+            $news->image=$imagename;
+        }
+        if($writer_image)
+        {
+            $writerimagename = time().'w.'.$writer_image->getClientOriginalExtension();
+            $request->writer_image->move('writer_image',$writerimagename);            
+        }
+        $news->topic=$request->topic;
+        $news->writer=$request->writer;
+        $news->Description=$request->Description;
+        $news->save();
+        return redirect()->route('news.index');
     }
 
     /**
@@ -95,6 +114,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news=news::find($id);
+        $news->delete();
+        return redirect()->back();
     }
 }

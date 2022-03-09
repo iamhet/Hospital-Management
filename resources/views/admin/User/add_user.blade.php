@@ -19,7 +19,7 @@
                     <button type="button" class="close" data-dismiss='alert'>X</button>
                 </div>
             @endif
-            <h1 class="mt-5 display-2">ADD ROLES</h1>
+            <h1 class="mt-5 display-2">ADD USER</h1>
             {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
             @csrf
             <div class="mt-5 pt-3 w-50 ">

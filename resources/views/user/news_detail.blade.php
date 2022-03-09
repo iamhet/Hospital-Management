@@ -67,7 +67,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item ">
               <a class="nav-link" href="{{url('home')}}">Home</a>
             </li>
             <li class="nav-item">
@@ -77,7 +77,7 @@
               <a class="nav-link" href="{{url('doctors')}}">Doctors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('newsdetail')}}">News</a>
+              <a class="nav-link active" href="{{url('newsdetail')}}">News</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url('contact')}}">Contact</a>
@@ -112,74 +112,151 @@
         </div>
   @endif
 
-  <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
-    <div class="hero-section">
-      <div class="container text-center wow zoomIn">
-        <span class="subhead">Let's make your life happier</span>
-        <h1 class="display-4">Healthy Living</h1>
-        <a href="#" class="btn btn-primary">Let's Consult</a>
-      </div>
-    </div>
-  </div>
 
-
-  <div class="bg-light">
-    <div class="page-section py-3 mt-md-n5 custom-index">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-secondary text-white">
-                <span class="mai-chatbubbles-outline"></span>
-              </div>
-              <p><span>Chat</span> with a doctors</p>
-            </div>
-          </div>
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-primary text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-              <p><span>One</span>-Health Protection</p>
-            </div>
-          </div>
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-accent text-white">
-                <span class="mai-basket"></span>
-              </div>
-              <p><span>One</span>-Health Pharmacy</p>
-            </div>
-          </div>
+  <div class="page-section pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb bg-transparent py-0 mb-5">
+              <li class="breadcrumb-item"><a href="{{url('home')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{url('newsdetail')}}">news</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{$news->topic}}</li>
+            </ol>
+          </nav>
         </div>
-      </div>
-    </div> <!-- .page-section -->
+      </div> <!-- .row -->
 
-    <div class="page-section pb-0">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>Welcome to Your Health <br> Center</h1>
-            <p class="text-grey mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p>
-            <a href="about.html" class="btn btn-primary">Learn More</a>
-          </div>
-          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-            <div class="img-place custom-img-1">
-              <img src="../assets/img/bg-doctor.png" alt="">
+      <div class="row">
+        <div class="col-lg-8">
+          <article class="blog-details">
+            <div class="post-thumb">
+              <img src={{asset('news_image/'.$news->image)}} alt="">
             </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .bg-light -->
-  </div> <!-- .bg-light -->
+            <div class="post-meta">
+              <div class="post-author">
+                <span class="text-grey">By</span> <a href="#">{{$news->writer}}</a>  
+              </div>
+              <span class="divider">|</span>
+              <div class="post-date">
+                <a href="#">22 Jan, 2018</a>
+              </div>
+              <span class="divider">|</span>
+              <div>
+                <a href="#">StreetStyle</a>, <a href="#">Fashion</a>, <a href="#">Couple</a>  
+              </div>
+              <span class="divider">|</span>
+              <div class="post-comment-count">
+                <a href="#">8 Comments</a>
+              </div>
+            </div>
+            <h2 class="post-title h1">{{$news->topic}}</h2>
+            <div class="post-content">
+              <p>{{$news->Description}}</p>
+              </div>
+            <div class="post-tags">
+              <a href="#" class="tag-link">LifeStyle</a>
+              <a href="#" class="tag-link">Food</a>
+              <a href="#" class="tag-link">Coronavirus</a>
+            </div>
+          </article> <!-- .blog-details -->
 
-  @include('user.doctor')
-
-  @include('user.latest')
-
-  @include('user.appointment')
-
+          <div class="comment-form-wrap pt-5">
+            <h3 class="mb-5">Leave a comment</h3>
+            <form action="#" class="">
+              <div class="form-row form-group">
+                <div class="col-md-6">
+                  <label for="name">Name *</label>
+                  <input type="text" class="form-control" id="name">
+                </div>
+                <div class="col-md-6">
+                  <label for="email">Email *</label>
+                  <input type="email" class="form-control" id="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" class="form-control" id="website">
+              </div>
   
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="msg" id="message" cols="30" rows="8" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Post Comment" class="btn btn-primary">
+              </div>
+  
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Search</h3>
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                  <button type="submit" class="btn"><span class="icon mai-search"></span></button>
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Categories</h3>
+              <ul class="categories">
+                <li><a href="#">Food <span>12</span></a></li>
+                <li><a href="#">Dish <span>22</span></a></li>
+                <li><a href="#">Desserts <span>37</span></a></li>
+                <li><a href="#">Drinks <span>42</span></a></li>
+                <li><a href="#">Ocassion <span>14</span></a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Recent Blog</h3>
+             @foreach ($news_d as $item)
+                 
+             <div class="blog-item">
+                 <a class="post-thumb" href="">
+                     <img src="{{asset('news_image/'.$item->image)}}" alt="">
+                    </a>
+                    <div class="content">
+                        <h5 class="post-title"><a href="#">{{$item->topic}}</a></h5>
+                        <div class="meta">
+                            <a href="#"><span class="mai-calendar"></span>{{$item->created_at}}</a>
+                            <a href="#"><span class="mai-person"></span> {{$item->writer}}</a>
+                            <a href="#"><span class="mai-chatbubbles"></span> 19</a>
+                        </div>
+                    </div>
+                </div>
+                
+                @endforeach
+
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Tag Cloud</h3>
+              <div class="tagcloud">
+                <a href="#" class="tag-cloud-link">dish</a>
+                <a href="#" class="tag-cloud-link">menu</a>
+                <a href="#" class="tag-cloud-link">food</a>
+                <a href="#" class="tag-cloud-link">sweet</a>
+                <a href="#" class="tag-cloud-link">tasty</a>
+                <a href="#" class="tag-cloud-link">delicious</a>
+                <a href="#" class="tag-cloud-link">desserts</a>
+                <a href="#" class="tag-cloud-link">drinks</a>
+              </div>
+            </div>
+
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Paragraph</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+            </div>
+          </div>
+        </div> 
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </div> <!-- .page-section -->
+   
+
 
   <footer class="page-footer">
     <div class="container">
