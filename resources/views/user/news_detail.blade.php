@@ -215,13 +215,12 @@
             <div class="sidebar-block">
               <h3 class="sidebar-title">Recent Blog</h3>
              @foreach ($news_d as $item)
-                 
              <div class="blog-item">
                  <a class="post-thumb" href="">
                      <img src="{{asset('news_image/'.$item->image)}}" alt="">
                     </a>
                     <div class="content">
-                        <h5 class="post-title"><a href="#">{{$item->topic}}</a></h5>
+                        <h5 class="post-title"><a href="{{url('news_open',$item->id)}}">{{$item->topic}}</a></h5>
                         <div class="meta">
                             <a href="#"><span class="mai-calendar"></span>{{$item->created_at}}</a>
                             <a href="#"><span class="mai-person"></span> {{$item->writer}}</a>
@@ -229,7 +228,6 @@
                         </div>
                     </div>
                 </div>
-                
                 @endforeach
 
             <div class="sidebar-block">

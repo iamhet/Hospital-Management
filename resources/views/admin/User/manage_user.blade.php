@@ -24,7 +24,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($user as $item)
+                    @foreach ($user->chunk(2) as $items)
+                        @foreach ($items as $item)
+
                         <tr>
                             <th scope="row">{{ $item->id }}</th>
                             <td>{{ $item->name }}</td>
@@ -47,6 +49,7 @@
                                   </form>
                             </td>
                         </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>

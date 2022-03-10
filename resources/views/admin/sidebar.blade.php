@@ -67,6 +67,7 @@
       </a>
     </li>
 
+    @can('role_management')
     <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
@@ -75,14 +76,17 @@
         <span class="menu-title">Role Management </span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="auth">
+        <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{route('roles.create')}}">Add Role</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{route('roles.index')}}">Manage Role</a></li>
         </ul>
       </div>
     </li>
+    @endcan
 
+    @can('user_management')
+      
     <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#user" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
@@ -98,7 +102,10 @@
         </ul>
       </div>
     </li>
+    @endcan
     
+    @can('doctor_management')
+      
     <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#doctor" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
@@ -114,6 +121,10 @@
         </ul>
       </div>
     </li>
+    @endcan
+
+    @can('appointment_management')
+      
     <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
@@ -130,6 +141,9 @@
         </ul>
       </div>
     </li>
+    @endcan
+    @can('appointment_management')
+      
     <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <span class="menu-icon">
@@ -145,6 +159,7 @@
         </ul>
       </div>
     </li>
+    @endcan
     
   </ul>
   </div>

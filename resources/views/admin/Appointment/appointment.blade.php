@@ -24,7 +24,8 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($approved as $item)
+            @foreach ($approved->chunk(2) as $items)
+            @foreach ($items as $item)
             <tr>
               <th scope="row">{{$item->user_id}}</th>
               <td>{{$item->name}}</td>
@@ -35,6 +36,7 @@
               <td>{{$item->speciality}}</td>
               <td><button class="btn btn-success">{{$item->status}}</button></td>
           </tr>
+          @endforeach
           @endforeach 
           </tbody>
       </table>

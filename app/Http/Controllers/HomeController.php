@@ -23,6 +23,7 @@ class HomeController extends Controller
             return view('user.home', compact('doctor', 'items', 'news', ));
         }
     }
+    
     public function redirect()
     {
         if (Auth::id()) {
@@ -34,10 +35,8 @@ class HomeController extends Controller
             } else {
                 return view('admin.home');
             }
-        } else {
-        }
+        } 
     }
-
     public function about()
     {
         $doctor = doctor_info::all();

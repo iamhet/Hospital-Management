@@ -20,7 +20,7 @@
                 </div>
             @endif
             <h1 class="mt-5 display-2">UPDATE USERS</h1>
-            {!! Form::open(['route' => ['users.store',$user->id], 'method' => 'POST']) !!}
+            {!! Form::open(['route' => ['users.update',$user->id], 'method' => 'PATCH']) !!}
             @csrf
             <div class="mt-5 pt-3 w-50 " >
                     <div class="form-outline mb-4 form-outline form-white" >

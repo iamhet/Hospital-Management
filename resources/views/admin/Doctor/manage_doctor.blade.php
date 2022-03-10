@@ -37,7 +37,8 @@
                                 <td><img src="doctor/{{ $item->image }}" style="width: 80px; height: 80px;" /></td>
                                 <td><a href="{{ route('doctor.edit', $item->id) }}" class="btn btn-primary">Update</a>
                                 </td>
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['news.destroy', $item->id], 'style' => 'display:inline']) !!}
+                                <td>
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['doctor.destroy', $item->id], 'style' => 'display:inline']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                                 {!! Form::close() !!}
                                 </td>

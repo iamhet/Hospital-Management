@@ -2,8 +2,9 @@
     <div class="container">
       <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>
       <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
-      @foreach ($doctor as $doctors)
-
+      @foreach ($doctor->chunk(2) as $doctorss)
+        @foreach ($doctorss as $doctors)
+          
         <div class="item">
           <div class="card-doctor">
             <div class="header">
@@ -19,6 +20,7 @@
             </div>
           </div>
         </div>
+        @endforeach
         @endforeach
       </div>
 

@@ -111,7 +111,9 @@
       </tr>
     </thead>
     <tbody>
-        @foreach ($appointment as $appoint)
+        @foreach ($appointment->chunk(2) as $appoints)
+        @foreach ($appoints as $appoint)
+
         <tr>
           <th scope="row">{{$appoint->id}}</th>
           <td>{{$appoint->name}}</td>
@@ -125,6 +127,7 @@
               </a>
           </td>
       </tr>
+      @endforeach
       @endforeach
     </tbody>
 </table>

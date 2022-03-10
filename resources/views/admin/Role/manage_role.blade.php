@@ -19,13 +19,16 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($role as $item)
+            @foreach ($role->chunk(2) as $items)
+            @foreach ($items as $item)
+
             <tr>
               <th scope="row">{{$item->id}}</th>
               <td>{{$item->name}}</td>
               <td><a href="{{route('roles.edit',$item->id)}}" class="btn btn-primary">Update</a>
                 <a href="{{url('roles_destroy',$item->id)}}" class="btn btn-danger">Delete</a></td>
           </tr>
+          @endforeach
           @endforeach 
           </tbody>
       </table>

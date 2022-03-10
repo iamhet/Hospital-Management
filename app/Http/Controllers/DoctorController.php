@@ -84,6 +84,7 @@ class DoctorController extends Controller
         $image = $request->image;
         if($image)
         {
+            unlink('doctor/'.$doctor->image);   
             $imagename=time().'.'.$image->getClientOriginalExtension();
             $request->image->move('doctor',$imagename);
             $doctor->image=$imagename;
@@ -104,6 +105,7 @@ class DoctorController extends Controller
     public function destroy($id)
     {
         $doctor=doctor_info::find($id);
+        unlink('doctor/'.$doctor->image);
         $doctor->delete();
         return redirect()->back();
     }

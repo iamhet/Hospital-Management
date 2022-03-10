@@ -131,7 +131,8 @@
                 <div class="col-lg-8">
                     <div class="row">
 
-                        @foreach ($news as $item)
+                        @foreach ($news->chunk(2) as $items)
+                        @foreach ($items as $item)
                             <div class="col-sm-6 py-3">
                                 <div class="card-blog">
                                     <div class="header">
@@ -157,6 +158,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         @endforeach
                         <div class="col-12 my-5">
                             {{ $news->links() }}
@@ -189,13 +191,14 @@
 
                         <div class="sidebar-block">
                             <h3 class="sidebar-title">Recent Blog</h3>
-                            @foreach ($news_d as $news)
+                            @foreach ($news_d->chunk(2) as $newss)
+                            @foreach ($newss as $news)
                                 <div class="blog-item">
                                     <a class="post-thumb" href="">
                                         <img src="news_image/{{ $news->image }}" alt="">
                                     </a>
                                     <div class="content">
-                                        <h5 class="post-title"><a href="#">{{$news->topic}}</a></h5>
+                                        <h5 class="post-title"><a href="{{url('news_open',$item->id)}}">{{$news->topic}}</a></h5>
                                         <div class="meta">
                                             <a href="#"><span class="mai-calendar"></span> {{$news->created_at}}</a>
                                             <a href="#"><span class="mai-person"></span> {{$news->writer}}</a>
@@ -204,7 +207,7 @@
                                     </div>
                                 </div>
                             @endforeach
-
+                            @endforeach
 
                             <div class="sidebar-block">
                                 <h3 class="sidebar-title">Tag Cloud</h3>

@@ -56,7 +56,7 @@
                         <label for="exampleInputPassword1" class="form-label">Role :-</label>
                         {!! Form::select('role[]', $role,[], array('class' => 'form-control','multiple')) !!}
                       </div>
-                    {!! Form::submit('ADD ROLE', ['class' => 'btn btn-primary btn-block mb-4']) !!}
+                    {!! Form::submit('ADD USER', ['class' => 'btn btn-primary btn-block mb-4']) !!}
                 </form>
             </div>
             {!! Form::close() !!}

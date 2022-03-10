@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MyMail;
 use Illuminate\Http\Request;
 use App\Models\appointment;
 use App\Models\approve_appointment;
 use App\Models\cancled_appointment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -97,6 +99,13 @@ class AppointmentController extends Controller
         $approved->status='approved';
         $approved->save();
         $data->delete();
+
+        $user_mail = Auth::user()->email;
+        $details = [
+            'title' => 'Mail from Het',
+            'body' => 'Your appointment is approved. Please come on date : '.$approved->date  
+        ];
+        Mail::to($user_mail)->send(new MyMail($details));
         return redirect()->back();
     }
 
