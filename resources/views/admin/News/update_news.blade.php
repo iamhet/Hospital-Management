@@ -32,7 +32,7 @@
 
                     </div>
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example2">Writer Name :</label>
+                      <label class="form-label" for="form2Example2">Description :</label>
                       {!!Form::textarea('Description', $news->Description, [
                         'class'      => 'form-control',
                         'rows'       => 6, 

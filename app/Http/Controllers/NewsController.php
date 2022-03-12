@@ -105,7 +105,6 @@ class NewsController extends Controller
         $news->save();
         return redirect()->route('news.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

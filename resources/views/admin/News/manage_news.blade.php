@@ -43,7 +43,6 @@
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger ']) !!}
                                 {!! Form::close() !!}
                                 </td>
-
                             </tr>
                         @endforeach
                     @endforeach
@@ -52,5 +51,4 @@
         </div>
         @include('admin.script')
 </body>
-
 </html>

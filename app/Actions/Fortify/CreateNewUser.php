@@ -29,8 +29,19 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
         
+        
+
         $user = $input['email'];
-        Notification::send($user, new WelcomeNotification($user));
+  
+        $details = [
+            'greeting' => 'Hi ',
+            'body' => 'Welcome in Devine Hospital',
+            'thanks' => 'Now you are our member, So Thank You!',
+            'actionText' => 'View My Site',
+            'actionURL' => url('/')
+        ];
+  
+        Notification::send($user, new WelcomeNotification($details));            
 
         return User::create([
             'name' => $input['name'],
@@ -39,7 +50,5 @@ class CreateNewUser implements CreatesNewUsers
             'address' => $input['address'],
             'password' => Hash::make($input['password']),
         ]);
-
-
     }
 }

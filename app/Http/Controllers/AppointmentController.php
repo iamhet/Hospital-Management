@@ -99,8 +99,8 @@ class AppointmentController extends Controller
         $approved->status='approved';
         $approved->save();
         $data->delete();
-
-        $user_mail = Auth::user()->email;
+        
+        $user_mail = $approved->email;
         $details = [
             'title' => 'Mail from Het',
             'body' => 'Your appointment is approved. Please come on date : '.$approved->date  

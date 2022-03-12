@@ -7,18 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MyMail extends Mailable
+class ReminderEmailDigest extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-    public $details;
+    private $reminders;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($reminders)
     {
-        $this->details = $details;
+        $this->reminders=$reminders;
     }
 
     /**
@@ -28,6 +28,6 @@ class MyMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.MyMail');
+        return $this->markdown('emails.reminder-digest');
     }
 }

@@ -11,12 +11,12 @@
               <div class="post-category">
                 <a href="#">Covid19</a>
               </div>
-              <a href="blog-details.html" class="post-thumb">
+              <a href="{{url('news_open',$item->id)}}" class="post-thumb">
                 <img src="news_image/{{$item->image}}" alt="">
               </a>
             </div>
             <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">{{$item->topic}}</a></h5>
+              <h5 class="post-title"><a href="{{url('news_open',$item->id)}}">{{$item->topic}}</a></h5>
               <div class="site-info">
                 <div class="avatar mr-2">
                   <div class="avatar-img">

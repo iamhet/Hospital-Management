@@ -70,7 +70,7 @@ class DoctorController extends Controller
         $doctor=doctor_info::find($id);
         return view('admin.Doctor.doctor_update',compact('doctor'));
     }
-
+  
     /**
      * Update the specified resource in storage.
      *

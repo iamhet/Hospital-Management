@@ -21,7 +21,6 @@ class UserController extends Controller
         $user=User::all();
         return view('admin.User.manage_user',compact('user'));        
     }
-
     /**
      * Show the form for creating a new resource.
      *
