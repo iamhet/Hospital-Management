@@ -31,7 +31,7 @@
               <td>{{$item->name}}</td>
               <td>{{$item->email}}</td>
               <td>{{$item->number}}</td>
-              <td>{{$item->message}}</td>
+              <td>{{Str::limit($item->message, 20)}}</td>
               <td>{{$item->date}}</td>
               <td>{{$item->speciality}}</td>
               <td><button class="btn btn-success">{{$item->status}}</button></td>

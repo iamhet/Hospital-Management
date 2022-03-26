@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    @include('admin.css')
+    
+    <head>
+        @include('admin.css')
+        @include('admin.script')
 </head>
 
 <body>
@@ -35,11 +36,11 @@
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->speciality }}</td>
                                 <td><img src="doctor/{{ $item->image }}" style="width: 80px; height: 80px;" /></td>
-                                <td><a href="{{ route('doctor.edit', $item->id) }}" class="btn btn-primary">Update</a>
-                                </td>
-                                <td>
-                                {!! Form::open(['method' => 'DELETE', 'route' => ['doctor.destroy', $item->id], 'style' => 'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                <td><a href="{{ route('doctor.edit', $item->id) }}" class="btn btn-primary">Update</a></td>
+                                {{-- <td><button class="btn btn-primary" id="update_doctor" data-id={{$item->id}}>Update</button></td> --}}
+                                <td>                                
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['doctor.destroy', $item->id], 'style' => 'display:inline','id'=>'delete_doctor_frm']) !!}
+                                {!! Form::submit('Delete', ['type'=>'submit','class' => 'btn btn-danger  delete_doctor_btn']) !!}
                                 {!! Form::close() !!}
                                 </td>
                             </tr>
@@ -48,7 +49,29 @@
                 </tbody>
             </table>
         </div>
-        @include('admin.script')
+    </div>
+
+        <script>
+            $(document).ready(function () {
+                $(document).on('submit','#delete_doctor_frm', function (e) {
+                    e.preventDefault();
+                    // alert();
+                    var action = $(this).attr('action');
+                    $.ajax({
+                        type: "delete",
+                        url: action,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        dataType:'json'
+                    }).done(function(){
+                        alert('doctor delete ho bhai.');
+                    });
+                });
+                
+            });
+        </script>
+        
 </body>
 
 </html>

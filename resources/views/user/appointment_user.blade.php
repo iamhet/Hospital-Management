@@ -79,7 +79,7 @@
             @if (Route::has('login'))
                 @auth
                 <li class="nav-item active">
-                  <a class="nav-link" href="appointment_user.html">Appointment</a>
+                  <a class="nav-link" href="show_appointment">Appointment</a>
                 </li>
                 <x-app-layout>
                 </x-app-layout>
@@ -120,7 +120,7 @@
           <td>{{$appoint->date}}</td>
           <td>{{$appoint->speciality}}</td>
           <td>
-              <a href="{{route('appointment.store',$appoint->id)}}">
+              <a href="{{url('appointment_destroy',$appoint->id)}}">
             <button type="button" class="btn btn-danger btn-sm px-3" style="color: white;background-color: red;">
               X
             </button>

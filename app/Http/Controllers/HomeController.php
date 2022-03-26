@@ -63,4 +63,10 @@ class HomeController extends Controller
     {
         return view('user.contact');
     }
+    public function appointment_destroy($id)
+    {
+        $appointment=appointment::find($id);
+        $appointment->delete();
+        return view('user.appointment_user');
+    }
 }

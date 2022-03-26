@@ -107,6 +107,6 @@ class DoctorController extends Controller
         $doctor=doctor_info::find($id);
         unlink('doctor/'.$doctor->image);
         $doctor->delete();
-        return redirect()->back();
+        return response()->json(['success'=>true]);
     }
 }
