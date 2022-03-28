@@ -28,6 +28,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/newsdetail','news');
     Route::get('/news_open/{id}','news_open');
     Route::get('/contact','contact');
+    Route::get('/download_pdf/{id}','download_pdf');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

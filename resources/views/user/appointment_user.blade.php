@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
 
   <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/css/theme.css">
 </head>
 <div>
@@ -106,8 +106,7 @@
         <th scope="col">Name</th>
         <th scope="col">Date</th>
         <th scope="col">Speciality</th>
-        <th scope="col">Delete</th>
-
+        <th scope="col">Delete</th> 
       </tr>
     </thead>
     <tbody>
@@ -121,9 +120,7 @@
           <td>{{$appoint->speciality}}</td>
           <td>
               <a href="{{url('appointment_destroy',$appoint->id)}}">
-            <button type="button" class="btn btn-danger btn-sm px-3" style="color: white;background-color: red;">
-              X
-            </button>
+                <i class="fa fa-trash-o" style="font-size:36px;color:red"></i>
               </a>
           </td>
       </tr>
@@ -131,6 +128,40 @@
       @endforeach
     </tbody>
 </table>
+<div class="container " style="margin-top: 7%;">
+  <h1>Approved Appointments</h1>
+  <br/><br/><br/>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Speciality</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach ($approved_appointment->chunk(2) as $appoints)
+        @foreach ($appoints as $appoint)
+
+        <tr>
+          <th scope="row">{{$appoint->id}}</th>
+          <td>{{$appoint->name}}</td>
+          <td>{{$appoint->date}}</td>
+          <td>{{$appoint->speciality}}</td>
+          <td>
+            <a href="{{url('download_pdf',$appoint->id)}}">
+            <i class="fa fa-download" style="font-size:36px"></i>
+            </a>
+          </td>
+      </tr>
+      @endforeach
+      @endforeach
+    </tbody>
+</table>
+
+</div>
 </div>
             
   

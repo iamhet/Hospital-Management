@@ -74,7 +74,8 @@ class AppointmentController extends Controller
         {
             $userid=Auth::user()->id;
             $appointment=appointment::where('user_id',$userid)->get();
-            return view('user.appointment_user',compact('appointment'));
+            $approved_appointment=approve_appointment::where('user_id',$userid)->get();
+            return view('user.appointment_user',compact('appointment','approved_appointment'));
         }
         else{
             return redirect()->back();
@@ -99,16 +100,19 @@ class AppointmentController extends Controller
         $approved->message=$data->message;
         $approved->user_id=$data->user_id;
         $approved->status='approved';
-        $approved->save();
-        $data->delete();
         
+        $pdf_name = '-'.rand().'_'.time().'.'.'pdf';
         $pdf = PDF::LoadView('admin.appointment-pdf',[
             'name' => $approved->name,
             'email' => $approved->email,
             'date' => $approved->date,
             'status' => $approved->status,
         ]);
-        Storage::put('public/storage/uploads/'.'-'.rand().'_'.time().'.'.$approved->name,$pdf->output());
+        Storage::put('public/storage/uploads/'.$pdf_name,$pdf->output());
+
+        $approved->pdf=$pdf_name;
+        $approved->save();
+        $data->delete();
 
         $user_mail = $approved->email;
         $details = [

@@ -177,9 +177,9 @@
 
   @include('user.latest')
 
+  @if (Route::has('login'))
   @include('user.appointment')
-
-  
+  @endif
 
   <footer class="page-footer">
     <div class="container">

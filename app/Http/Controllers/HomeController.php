@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\appointment;
+use App\Models\approve_appointment;
 use App\Models\doctor_info;
 use App\Models\news;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -65,8 +68,13 @@ class HomeController extends Controller
     }
     public function appointment_destroy($id)
     {
-        $appointment=appointment::find($id);
+        $appointment = appointment::find($id);
         $appointment->delete();
         return view('user.appointment_user');
+    }
+    public function download_pdf($id)
+    {
+        $approved = approve_appointment::find($id);
+        return Storage::download('public/storage/uploads'.$approved->pdf);  
     }
 }

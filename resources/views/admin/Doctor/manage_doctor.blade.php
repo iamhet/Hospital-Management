@@ -51,7 +51,7 @@
         </div>
     </div>
 
-        <script>
+        {{-- <script>
             $(document).ready(function () {
                 $(document).on('submit','#delete_doctor_frm', function (e) {
                     e.preventDefault();
@@ -70,7 +70,7 @@
                 });
                 
             });
-        </script>
+        </script> --}}
         
 </body>
 
