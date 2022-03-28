@@ -9,6 +9,8 @@ use App\Models\approve_appointment;
 use App\Models\cancled_appointment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class AppointmentController extends Controller
 {
@@ -100,17 +102,29 @@ class AppointmentController extends Controller
         $approved->save();
         $data->delete();
         
+        $pdf = PDF::LoadView('admin.appointment-pdf',[
+            'name' => $approved->name,
+            'email' => $approved->email,
+            'date' => $approved->date,
+            'status' => $approved->status,
+        ]);
+        Storage::put('public/storage/uploads/'.'-'.rand().'_'.time().'.'.$approved->name,$pdf->output());
+
         $user_mail = $approved->email;
         $details = [
+            'email' => $user_mail,
             'title' => 'Mail from Het',
             'body' => 'Your appointment is approved. Please come on date : '.$approved->date  
         ];
+        // Mail::send('emails.MyMail',$details,function($m)use($details,$pdf){
+        //     $m->to($details["email"])->subject($details["title"])->attachData($pdf->output(), "devine.pdf");
+        // });
         Mail::to($user_mail)->send(new MyMail($details));
         return redirect()->back();
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
