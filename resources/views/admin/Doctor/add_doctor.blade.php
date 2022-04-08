@@ -37,7 +37,10 @@
                     </div>
                     <div class="form-outline mb-4 ">
                         <label class="form-label" for="form2Example1">Doctor Image :</label><br>
-                        {!!Form::file('image',['class' => 'form-control text-dark'])!!}
+                        {!!Form::file('image',['class' => 'form-control text-dark', 'id' => 'image'])!!}
+
+                        <img id="preview-image" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                      alt="preview image" style="max-height: 250px;">
                     </div>
                     {!! Form::submit('ADD', ['class' => 'btn btn-primary btn-block mb-4']) !!}
            
@@ -46,5 +49,17 @@
 
     </div>
     @include('admin.script')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function (e) {
+        $('#image').change(function(){
+          let reader = new FileReader();
+          reader.onload = (e) => { 
+            $('#preview-image').attr('src', e.target.result); 
+          }
+          reader.readAsDataURL(this.files[0]); 
+        }); 
+      });
+    </script>
   </body>
 </html>

@@ -45,11 +45,15 @@
                     
                     <div class="form-outline mb-4 ">
                         <label class="form-label" for="form2Example1">Writer Image :</label><br>
-                        {!!Form::file('writer_image',['class' => 'form-control text-dark'])!!}
+                        {!!Form::file('writer_image',['class' => 'form-control text-dark', 'id' => 'image1'])!!}
+                        <img id="preview-image1" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                      alt="preview image" style="max-height: 250px;">
                     </div>
                     <div class="form-outline mb-4 ">
                         <label class="form-label" for="form2Example1">Image :</label><br>
-                        {!!Form::file('image',['class' => 'form-control text-dark'])!!}
+                        {!!Form::file('image',['class' => 'form-control text-dark','id' => 'image2'])!!}
+                        <img id="preview-image2" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                      alt="preview image" style="max-height: 250px;">
                     </div>
                     
                     {!! Form::submit('ADD', ['class' => 'btn btn-primary btn-block mb-4']) !!}
@@ -59,5 +63,25 @@
 
     </div>
     @include('admin.script')
+
+    <script type="text/javascript">
+      $(document).ready(function (e) {
+        $('#image1').change(function(){
+          let reader = new FileReader();
+          reader.onload = (e) => { 
+            $('#preview-image1').attr('src', e.target.result); 
+          }
+          reader.readAsDataURL(this.files[0]); 
+        });
+        
+         $('#image2').change(function(){
+          let reader = new FileReader();
+          reader.onload = (e) => { 
+            $('#preview-image2').attr('src', e.target.result); 
+          }
+          reader.readAsDataURL(this.files[0]); 
+        });
+      });
+    </script>
   </body>
 </html>
